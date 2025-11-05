@@ -1,0 +1,16 @@
+name: Issues
+
+on: 
+  issues:
+    types: opened
+
+jobs: 
+  issue-trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue
+        env: 
+          ISSUE_TITLE: ${{github.events.issue.title}}
+          ISSUE_BODY: ${{github.events.issue.body}}
+        run: echo $ISSUE_TITLE $ISSUE_BODY
+          
