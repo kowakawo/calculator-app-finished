@@ -20,11 +20,7 @@ jobs:
        - name: Run test
          run: npm test -- --coverage
        - name: Test Reporter
-         uses: dorny/test-reporter@v1.9.1
-         with: 
-           name: Jest tests
-           path: reports/junit.xml
-           reporter: jest-junit
+         uses: mridang/action-test-reporter@v1.3.0
          
          
     
