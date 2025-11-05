@@ -18,7 +18,7 @@ jobs:
        - name: Build the code
          run: npm run build --if-present
        - name: Run test
-         run: npm test -- --coverage --coverageReporters=clove
+         run: npm test -- --coverage --coverageReporters=clover
        - name: Better Test Reports Action
 
          uses: mridang/action-test-reporter@v1.3.0
