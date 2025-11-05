@@ -1,4 +1,4 @@
-name: Build Example
+name: TestReporter Example
 
 on: 
   workflow_dispatch
@@ -18,7 +18,11 @@ jobs:
        - name: Build the code
          run: npm run build --if-present
        - name: Run test
-         run: npm test
+         run: npm test -- --coverage
+       - name: Test Reporter
+         uses: dormy/test-reporter@v1.9.1
+         
+         
        
     
        
