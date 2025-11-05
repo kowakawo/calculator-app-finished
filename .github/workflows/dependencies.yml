@@ -12,7 +12,7 @@ jobs:
          with:
            repository: kowakawo/calculator-app-finished
        - name: NPM framework set up 
-         uses: actions/setup-node@v6.O.O
+         uses: actions/setup-node@v6.0.0
        - name: List contents
          run: ls -alhR
            
