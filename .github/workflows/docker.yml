@@ -1,0 +1,49 @@
+name: Docker Example
+
+on: 
+  workflow_dispatch
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout
+         uses: actions/checkout@v5.0.0
+         with:
+           repository: kowakawo/calculator-app-finished
+       - name: Setup Node.js environment
+         uses: actions/setup-node@v6.0.0
+       - name: Install dependencies
+         run: npm install
+       - name: Build the code
+         run: npm run build --if-present
+       - name: Run test
+         run: npm test -- --coverage --coverageReporters=clover
+       - name: Better Test Reports Action
+
+         uses: mridang/action-test-reporter@v1.3.0
+         with:
+    # GitHub token used to authenticate API requests. Required for checking status checks and publishing releases. Use `secrets.GITHUB_TOKEN` or a PAT with elevated scopes if needed.
+           github-token: ${{secrets.GITHUB_TOKEN}}
+    # The directory where your project is located, used as the base for making file paths in the report relative.
+           working-directory: .
+    # The path to the single code coverage report file you want to parse (e.g., 'build/reports/clover.xml').
+           coverage-file: coverage/clover.xml
+    # Set to `true` to upload the generated coverage report as a workflow artifact. If omitted or left empty, this defaults to `true`. Set to `false` to disable artifact upload.
+       - name: Docker Setup Docker
+         uses: docker/setup-docker-action@v4.5.0
+         
+       - name: Docker Login
+         uses: docker/login-action@v3.6.0
+         with: 
+           username: ${{vars.DOCKERHUB_USERNAME}}
+           password: ${{secrets.DOCKERHUB_TOKEN}}
+           
+       - name: Build and push Docker images
+         uses: docker/build-push-action@v6.18.0
+         with:
+           push: true
+           tags: ${{vars.DOCKERHUB_USERNAME}}/app:latest
+           
+
+         
