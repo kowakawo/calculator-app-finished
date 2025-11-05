@@ -20,7 +20,7 @@ jobs:
        - name: Run test
          run: npm test -- --coverage
        - name: Test Reporter
-         uses: dormy/test-reporter@v1.9.1
+         uses: dorny/test-reporter@v1.9.1
          
          
        
