@@ -21,14 +21,10 @@ jobs:
          run: npm test -- --coverage
        - name: Test Reporter
          uses: dorny/test-reporter@v1.9.1
+         with: 
+           name: Jest tests
+           path: coverage/clover.xml
+           reporter: jest-junit
          
-         
-       
-    
-       
-        
-       
-         
-           
          
     
