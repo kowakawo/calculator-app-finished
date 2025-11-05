@@ -41,12 +41,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.9.0
         with: 
-          images: ${{envs.DOCKERHUB_USERNAME}}/app
+          images: ${{env.DOCKERHUB_USERNAME}}/app
 
       - name: Docker Login
         uses: docker/login-action@v3.6.0
         with: 
-          username: ${{envs.DOCKERHUB_USERNAME}}
+          username: ${{env.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
       - name: Build and push Docker images
