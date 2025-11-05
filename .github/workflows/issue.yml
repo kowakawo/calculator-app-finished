@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Log issue
         env: 
-          ISSUE_TITLE: ${{github.events.issue.title}}
-          ISSUE_BODY: ${{github.events.issue.body}}
+          ISSUE_TITLE: ${{github.event.issue.title}}
+          ISSUE_BODY: ${{github.event.issue.body}}
         run: echo $ISSUE_TITLE $ISSUE_BODY
           
