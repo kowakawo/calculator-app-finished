@@ -1,0 +1,58 @@
+name: CI Workflow for Node.js app
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+          
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.0.0
+        
+      - name: Dependency installation
+        run: npm install
+        
+      - name: Run tests
+        run: npm test -- --coverage --coverageReports=clover
+        
+      - name: Better Test Reports Action
+        uses: mridang/action-test-reporter@v1.6.0
+        with: 
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          coverage-file: coverage/clover.xml
+          
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v5.0.0
+        with: 
+          name: test_results
+          path: coverage/clover.xml
+
+      - name: Docker Setup Docker
+        uses: docker/setup-docker-action@v4.5.0
+
+      - name: Docker Metadata action
+        id: meta
+        uses: docker/metadata-action@v5.9.0
+        with: 
+          images: ${{env.DOCKERHUB_USERNAME}}/app
+
+      - name: Docker Login
+        uses: docker/login-action@v3.6.0
+        with: 
+          username: ${{env.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: .
+          push: true
+          tags: ${{steps.meta.outputs.tags}}
+          label: ${{steps.meta.outputs.labels}}
