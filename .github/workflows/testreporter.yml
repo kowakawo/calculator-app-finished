@@ -18,7 +18,7 @@ jobs:
        - name: Build the code
          run: npm run build --if-present
        - name: Run test
-         run: npm test -- --coverage
+         run: npm test -- --coverage --coverageReporters=clove
        - name: Better Test Reports Action
 
          uses: mridang/action-test-reporter@v1.3.0
@@ -31,7 +31,7 @@ jobs:
            working-directory: .
     # The path to the single code coverage report file you want to parse (e.g., 'build/reports/clover.xml').
 
-           coverage-file: build/reports/clover.xml
+           coverage-file: coverage/clover.xml
     # Set to `true` to upload the generated coverage report as a workflow artifact. If omitted or left empty, this defaults to `true`. Set to `false` to disable artifact upload.
 
    
