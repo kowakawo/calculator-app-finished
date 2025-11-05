@@ -18,7 +18,7 @@ jobs:
        - name: Build the code
          run: npm run build --if-present
        - name: Run test
-         run: npm test -- --coverage > build/reports/jest.xml
+         run: npm test -- --coverage
        - name: Better Test Reports Action
 
          uses: mridang/action-test-reporter@v1.3.0
