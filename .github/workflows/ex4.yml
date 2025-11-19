@@ -1,0 +1,47 @@
+name: Exercise 4
+
+on:
+  push:
+    branches: main
+
+  pull_request:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.0.0
+      - name: Dependency installation
+        run: npm install
+      - name: Run tests
+        run: npm test -- --coverage
+      - name: Better Test Reports Action
+        uses: mridang/action-test-reporter@v1.6.0
+        with: 
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          coverage-file: coverage/clover.xml
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v5.0.0
+        with: 
+          name: test_results
+          path: coverage/clover.xml
+          
+  code-quality:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: linting
+        run: npm run lint
+      - name: check code with prettier
+        run: npm run format:check
+      - name: security audit
+        run: npm audit
+      
+        
+  
+   
