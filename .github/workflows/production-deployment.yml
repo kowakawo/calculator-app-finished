@@ -1,0 +1,18 @@
+on: 
+  workflow_dispatch:
+
+jobs:
+  production-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect with SSH to deployment environment and run the container
+        uses: appleboy/ssh-action@1
+        with:
+          host: ${{ secrets.PROD_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            sudo docker pull kowakawo/app
+            sudo docker stop $(docker ps -q) || echo "There are no containers active"
+            sudo docker run -p -d 80:3000 kowakawo/app
