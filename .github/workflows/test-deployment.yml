@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  deployment-test:
+    runs-on: self-hosted
+    steps: 
+      - name: Pull image from dockerhub
+        run: docker pull kowakawo/app
+      - name: Stop all running containers
+        run: docker stop $(docker ps -q)
+      - name: Run the latest version of the containerized application
+        run: docker run kowakawo/app
+    
