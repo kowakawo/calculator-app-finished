@@ -8,7 +8,7 @@ jobs:
       - name: Pull image from dockerhub
         run: docker pull kowakawo/app
       - name: Stop all running containers
-        run: docker stop $(docker ps -q)
+        run: docker stop $(docker ps -q) || echo "There are no containers active"
       - name: Run the latest version of the containerized application
         run: docker run kowakawo/app
     
