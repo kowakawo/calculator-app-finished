@@ -3,7 +3,7 @@ on:
 
 jobs:
   production-deployment:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Connect with SSH to deployment environment and run the container
         uses: appleboy/ssh-action@v1.2.4
