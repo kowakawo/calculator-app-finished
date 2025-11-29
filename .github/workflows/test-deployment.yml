@@ -10,5 +10,5 @@ jobs:
       - name: Stop all running containers
         run: docker stop $(docker ps -q) || echo "There are no containers active"
       - name: Run the latest version of the containerized application
-        run: docker run -p 3000:3000 kowakawo/app
+        run: docker run -p -d 3000:3000 kowakawo/app
     
