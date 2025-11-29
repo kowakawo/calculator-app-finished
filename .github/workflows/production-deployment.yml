@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Connect with SSH to deployment environment and run the container
-        uses: appleboy/ssh-action@1
+        uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.PROD_IP }}
           username: ubuntu
