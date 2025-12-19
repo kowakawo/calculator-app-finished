@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "35aedace-a9fc-400a-8804-ec76c0f3d5a2",
+		"name": "api-testcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50176319",
+		"_collection_link": "https://sander-paulus2-3358598.postman.co/workspace/Sander-Paulus's-Workspace~7ec4a0b8-040e-44a4-8b9d-b44bb6c5e738/collection/50176319-35aedace-a9fc-400a-8804-ec76c0f3d5a2?action=share&source=collection_link&creator=50176319"
+	},
+	"item": [
+		{
+			"name": "Make new pet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12402351,\r\n    \"category\": {\r\n        \"id\": 5,\r\n        \"name\": \"bever\"\r\n    },\r\n    \"name\": \"bobo\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 0,\r\n            \"name\": \"string\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "petstore.swagger.io/v2/pet",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get details of new pet",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of all available pets",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete new pet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/12402351",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"12402351"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of all available pets",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get store inventory",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
