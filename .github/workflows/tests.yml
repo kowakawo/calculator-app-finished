@@ -17,7 +17,7 @@ jobs:
       with:
         collection: ./tests/integration/api-testcollection.postman_collection.json
     - name: Run Playwright tests
-      run: npx playwright test tests/e2e/example.spec.ts --trace on --timeout=30000 --workers=1
+      run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
