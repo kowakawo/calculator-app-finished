@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 12402351,\r\n    \"category\": {\r\n        \"id\": 5,\r\n        \"name\": \"bever\"\r\n    },\r\n    \"name\": \"bobo\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 0,\r\n            \"name\": \"string\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}",
+					"raw": "{\r\n    \"id\": 12402351,\r\n    \"category\": {\r\n        \"id\": 5,\r\n        \"name\": \"bever\"\r\n    },\r\n    \"name\": \"boboPXL\",\r\n    \"photoUrls\": [\r\n        \"string\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 0,\r\n            \"name\": \"string\"\r\n        }\r\n    ],\r\n    \"status\": \"available\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -22,7 +22,8 @@
 					}
 				},
 				"url": {
-					"raw": "petstore.swagger.io/v2/pet",
+					"raw": "https://petstore.swagger.io/v2/pet/",
+					"protocol": "https",
 					"host": [
 						"petstore",
 						"swagger",
@@ -30,7 +31,8 @@
 					],
 					"path": [
 						"v2",
-						"pet"
+						"pet",
+						""
 					]
 				}
 			},
@@ -40,7 +42,21 @@
 			"name": "Get details of new pet",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/12402351",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"12402351"
+					]
+				}
 			},
 			"response": []
 		},
@@ -48,7 +64,27 @@
 			"name": "Get list of all available pets",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "available"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -78,7 +114,27 @@
 			"name": "Get list of all available pets",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "available"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -86,7 +142,21 @@
 			"name": "Get store inventory",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/inventory",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"inventory"
+					]
+				}
 			},
 			"response": []
 		}
